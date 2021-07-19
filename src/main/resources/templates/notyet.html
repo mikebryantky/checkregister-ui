@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="fragments/header.html"></head>
+<body>
+<span th:insert="fragments/navigation.html"></span>
+
+
+
+<main class="container">
+    <div class="row">
+        <h2>Still Working Here...</h2>
+        <p>
+            That ain't done yet.
+        </p>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        $('#bookList').DataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+        });
+    });
+</script>
+
+<footer th:insert="fragments/footer.html"></footer>
+</body>
+</html>
+

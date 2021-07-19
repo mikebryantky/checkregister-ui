@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="fragments/header.html"></head>
+<body>
+<span th:insert="fragments/navigation.html" th:remove="tag"></span>
+
+
+<main class="container">
+    <div class="row">
+        <h2>Current Books</h2>
+        <table id="bookList" class="display">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Call Number</th>
+                <th>Author(s)</th>
+                <th>Publisher</th>
+                <th>Published Year</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="book : ${books}">
+                <td>
+                    <a th:href="@{/book/view(uuid=${book.uuid})}"><span th:utext="${book.title}"></span></a>
+                </td>
+                <td th:utext="${book.genre.genreName}">...</td>
+                <td th:utext="${book.callNumber}">...</td>
+                <td>
+                    <span th:each="bookAuthors : ${book.bookAuthors}">
+                        <a th:href="@{/notyet}">
+                            <span th:text="${bookAuthors.author.displayName}"></span>
+                        </a>
+                        &nbsp;&nbsp;
+                    </span>
+                </td>
+                <td th:utext="${book.publisher}">...</td>
+                <td th:utext="${book.publishYear}">...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <a th:href="@{/book/edit}"
+           class="btn btn-outline-primary"
+           sec:authorize="hasRole('ROLE_ADMIN')"
+           role="button">
+            Add Book
+        </a>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        $('#bookList').DataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+        });
+    });
+</script>
+
+
+<footer th:insert="fragments/footer.html"></footer>
+</body>
+</html>

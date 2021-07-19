@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="fragments/header.html"></head>
+<body>
+<span th:insert="fragments/navigation.html"></span>
+
+
+<main class="container">
+    <div class="row" id="balance">
+        <table style="width: 250px; border: solid thin grey;">
+            <tr>
+                <td colspan="2" align="center" style="border-bottom: solid thin grey">
+                    <b>Balance</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Reconciled</b>
+                </td>
+                <td>
+                    <b>Unreconciled</b>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    $<span th:utext="${balance.reconciled}"></span>
+                </td>
+                <td>
+                    $<span th:utext="${balance.unreconciled}"></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row">
+        &nbsp;
+    </div>
+    <div class="row" style="border: solid thin grey">
+        <h2>Transactions This Month</h2>
+        <table id="transactionList" class="display">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Check Number</th>
+                <th>Reconciled Date</th>
+                <th>Type</th>
+                <th>Method</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="transaction : ${transactions}">
+                <td th:utext="${transaction.txDate}">...</td>
+                <td>
+                    <span th:utext="${transaction.amount}"
+                          th:class="${transaction.transactionType.color}" ></span>
+                </td>
+                <td th:utext="${transaction.description}">...</td>
+                <td th:utext="${transaction.checkNumber}">...</td>
+                <td th:utext="${transaction.reconciledDate}">...</td>
+                <td th:utext="${transaction.transactionType.description}">...</td>
+                <td th:utext="${transaction.transactionMethod.description}">...</td>
+                <td th:utext="${transaction.transactionCategory.description}">...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+        $('#transactionList').DataTable({
+            "bPaginate": false,
+            "bLengthChange": false,
+        });
+    });
+</script>
+
+<footer th:insert="fragments/footer.html"></footer>
+</body>
+</html>

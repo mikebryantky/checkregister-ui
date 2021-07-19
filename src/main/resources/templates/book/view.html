@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="fragments/header.html"></head>
+<body>
+<span th:insert="fragments/navigation.html"></span>
+
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-5">
+            <div class="project-info-box mt-0">
+                <h2><span th:utext="${book.title}"></span></h2>
+                <h5><span th:utext="${book.subTitle}"></span></h5>
+                <p>&nbsp;</p>
+                <p><b>Call Number:</b> <span th:utext="${book.callNumber}"></span></p>
+                <p><b>ISBN:</b> <span th:utext="${book.isbn}"></span></p>
+                <p><b>Publisher:</b> <span th:utext="${book.publisher}"></span></p>
+                <p><b>Published Year:</b> <span th:utext="${book.publishYear}"></span></p>
+                <p><b>Loanable:</b> <span th:utext="${book.availableForRemovalInd}"></span></p>
+                <p><b>Genre:</b> <span th:utext="${book.genre.genreName}"></span></p>
+                <p><b>Author(s):</b>
+                    <span th:each="bookAuthors : ${book.bookAuthors}">
+                        <a th:href="@{/notyet}">
+                            <span th:text="${bookAuthors.author.displayName}"></span>
+                        </a>
+                        &nbsp;&nbsp;
+                    </span>
+                </p>
+                <p class="mb-0" th:utext="${book.synopsis}"></p>
+            </div>
+        </div><!-- / column -->
+
+        <div class="col-md-7">
+            <img th:src="@{/img/} + ${book.imageFile}" class="img-responsive" style="height: 65%; width: 65%;" >
+        </div><!-- / column -->
+    </div>
+
+    <div>
+        <a class="btn btn-outline-primary"
+           role="button"
+           sec:authorize="hasRole('ROLE_ADMIN')"
+           th:href="@{/book/edit(uuid=${book.uuid})}">
+            Edit
+        </a>
+    </div>
+</main>
+
+<script>
+    $(document).ready(function () {
+    });
+</script>
+
+<footer th:insert="fragments/footer.html"></footer>
+</body>
+</html>

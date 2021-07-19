@@ -1,0 +1,27 @@
+
+logging:
+  file:
+    name: logs/checkregister-ui.log
+  level:
+    ROOT: WARN
+    org.springframework: ERROR
+    com.mikebryant: DEBUG
+
+spring.output.ansi.enabled: detect
+
+backend:
+  base-url: http://localhost:8080
+  read-timeout: 5000
+  connect-timeout: 5000
+
+server:
+  port: 8081
+  servlet:
+    context-path: /checkregister-ui
+
+spring:
+  thymeleaf:
+    cache: false
+    servlet:
+      produce-partial-output-while-processing: true
+    enable-spring-el-compiler: true
