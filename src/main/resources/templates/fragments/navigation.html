@@ -8,7 +8,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/book/list}">Books</a>
+                <a class="nav-link" th:href="@{/transaction/list}">Transaction List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/notyet}">Reports</a>
             </li>
 
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -18,14 +21,14 @@
                         Administration
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" th:href="@{/notyet}">Currently On Loan</a></li>
-                        <li><a class="dropdown-item" th:href="@{/notyet}">Items Past Due</a></li>
+                        <li><a class="dropdown-item" th:href="@{/notyet}">Types</a></li>
+                        <li><a class="dropdown-item" th:href="@{/notyet}">Categories</a></li>
+                        <li><a class="dropdown-item" th:href="@{/notyet}">Methods</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" th:href="@{/notyet}">Users</a></li>
-                        <li><a class="dropdown-item" th:href="@{/notyet}">Genres</a></li>
-                        <li><a class="dropdown-item" th:href="@{/book/edit}">Add Book</a></li>
+                        <li><a class="dropdown-item" th:href="@{/notyet}">Adjustments</a></li>
+                        <li><a class="dropdown-item" th:href="@{/notyet}">Reconcilation</a></li>
                     </ul>
                 </li>
             </ul>
