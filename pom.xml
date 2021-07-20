@@ -14,7 +14,7 @@
     <name>ui</name>
     <description>Check Register UI</description>
     <properties>
-        <java.version>11</java.version>
+        <java.version>13</java.version>
         <resilience4j.version>1.7.1</resilience4j.version>
     </properties>
     <dependencies>
